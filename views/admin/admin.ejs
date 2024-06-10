@@ -1,0 +1,58 @@
+<!-- views/admin.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style></style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Welcome to the Admin Dashboard!</h1>
+      <button class="nav-toggle btn">☰</button>
+    </header>
+    <nav>
+      <a href="/admin/home">Home</a>
+      <a href="/admin/supervisor">Supervisor</a>
+      <a href="/admin/branch">Branch</a>
+      <a href="/admin/logout">Logout</a>
+    </nav>
+    <main>
+      <h2>Main Area</h2>
+
+      <!-- Table of Fake Data -->
+      <table>
+        <thead>
+          <tr>
+            <th class="hover-effect" style="width: 50%">Name</th>
+            <th style="width: 50%">Email</th>
+          </tr>
+        </thead>
+        <% for (s of lead) { %>
+        <tbody>
+          <tr style="background-color: rgb(235, 228, 228)">
+            <td class="hover-effect" onclick="showLoginPopup('9xxxx', '1234')">
+              <%= s.username %>
+            </td>
+            <td><%= s.email %></td>
+          </tr>
+        </tbody>
+        <% } %>
+      </table>
+    </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleButton = document.querySelector(".nav-toggle");
+        const nav = document.querySelector("nav");
+
+        toggleButton.addEventListener("click", () => {
+          nav.classList.toggle("nav-active");
+        });
+      });
+    </script>
+  </body>
+</html>

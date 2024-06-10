@@ -1,0 +1,149 @@
+<!-- views/branch.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <style>
+      /* Add your custom styles here */
+    </style>
+    <title>Branch Page</title>
+   
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to the Branch Dashboard!</h1>
+    </header> <button class="nav-toggle btn">☰</button>
+  </header>
+  <nav>
+    <a href="/admin/home">Home</a>
+    <a href="/admin/supervisor">Supervisor</a>
+    <a href="/admin/branch">Branch</a>
+    <a href="/admin/logout">Logout</a>
+  </nav>
+    <main>
+      <button id="add-new-btn" onclick="toggleAddNewForm()">Add New</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Branch</th>
+            <th>Name</th>
+            <th>Mobile</th>
+          </tr>
+        </thead>
+          <% for (e of lead) { %>
+        <tbody>
+          <tr style="background-color: rgb(235, 228, 228)">
+            <td class="hover-effect" onclick="showLoginPopup('9xxx','1233')">
+              <%= e.branch %>
+            </td>
+            <td><%= e.name %></td>
+            <td><%= e.mobile %></td>
+          </tr>
+          <td style="border-style: hidden"></td>
+          <td style="border-style: hidden"></td>
+          <td style="text-align: right; border-style: hidden">
+            <button class="edit-btn" onclick="toggleEditForm('<%= e._id %>')">Edit</button>
+            <button class="delete-btn" onclick="deleteLead('<%= e._id %>')">Delete</button>
+          </td>
+        </tbody> 
+        
+         
+        <% } %>
+      </table>
+
+      <div id="add-new-form">
+        <button id="close-btn" onclick="toggleAddNewForm()">Close</button>
+        <h2>Add New</h2>
+        <form action="/admin/branch/assign" method="post">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="mobile">Mobile:</label>
+          <input type="text" id="mobile" name="mobile" required />
+          <label for="branch">branch</label>
+          <input type="text" id="branch" name="branch" required />
+
+          <button type="submit">Add</button>
+        </form>
+      </div>
+
+      <div id="edit-form">
+        <button id="edit-close-btn" onclick="toggleEditFormClose()">
+          Close
+        </button>
+        <h2>Edit</h2>
+        <form action="/admin/branch/edit" method="post">
+          <input type="hidden" id="edit-lead-id" name="leadId" />
+          <label for="edit-name">Name:</label>
+          <input type="text" id="edit-name" name="name" required />
+          <label for="edit-mobile">Mobile:</label>
+          <input type="text" id="edit-mobile" name="mobile" required />
+          <button type="submit">Update</button>
+        </form>
+      </div>
+
+          <!-- Supervisor details will be populated here dynamically -->
+        </ul>
+      </div>
+    </main>
+    <script>
+      function copyToClipboard(elementId) {
+        const element = document.getElementById(elementId);
+        const text = element.innerText;
+
+        // Create a temporary textarea to copy text to the clipboard
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+
+        alert(`${elementId} copied to clipboard: ${text}`);
+      }
+    
+      function toggleAddNewForm() {
+        const addNewForm = document.getElementById("add-new-form");
+        addNewForm.style.display =
+          addNewForm.style.display === "block" ? "none" : "block";
+      }
+
+      function toggleEditForm(leadId) {
+        const editForm = document.getElementById("edit-form");
+        editForm.style.display =
+          editForm.style.display === "block" ? "none" : "block";
+         document.getElementById("edit-lead-id").value = leadId;
+       
+      }
+
+      function deleteLead(id) {
+        const confirmation =confirm("deakh le bhai delet ho gai to ps ni aygi");
+        if(confirmation){
+          fetch(`/admin/branch/delete/${id}`,{
+            method:'DELETE',
+          });
+          const result = { message: 'Delete' };
+          console.log(result);
+
+          if (result.message === 'Delete') {
+            window.location.reload();
+          }
+        }
+      }
+      function toggleEditFormClose() {
+        const editForm = document.getElementById("edit-form");
+        editForm.style.display = "none";
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleButton = document.querySelector(".nav-toggle");
+        const nav = document.querySelector("nav");
+
+        toggleButton.addEventListener("click", () => {
+          nav.classList.toggle("nav-active");
+        });
+      });
+    </script>
+  </body>
+</html>

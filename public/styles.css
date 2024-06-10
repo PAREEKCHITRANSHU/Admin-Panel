@@ -1,0 +1,425 @@
+/* Updated Fika Color Scheme */
+:root {
+  --primary-bg: #f9f9f9; /* Light Gray */
+  --secondary-bg: #a1d7a9; /* Light Green */
+  --primary-text: #333; /* Dark Gray */
+  --accent-color: #3f7f93; /* Blueish */
+}
+
+/* Rest of the CSS remains unchanged */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 1%;
+  text-align: center;
+  /* font-size: 80%; */
+}
+
+/* Base styles for sidebar */
+/* Base styles for sidebar */
+nav {
+  width: 200px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--primary-bg);
+  padding-top: 2%;
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+nav a {
+  display: block;
+  padding: 15px;
+  color: var(--primary-text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: var(--secondary-bg);
+  color: white;
+}
+
+/* Toggle button for small screens */
+.nav-toggle {
+  display: none;
+  position: fixed;
+  /* margin-right: 10%; */
+  top: 10px;
+  left: 10px;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.nav-toggle:focus {
+  outline: none;
+}
+
+/* Responsive layout */
+@media (max-width: 1020px) {
+  header {
+    font-size: 12px;
+    width: auto;
+    padding-left: 10%;
+  }
+  nav {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    /* top: 0% */
+    left: -100%;
+    box-shadow: none;
+    padding-top: 0;
+  }
+
+  nav a {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .nav-toggle {
+    display: block;
+    /* margin-right: 25%; */
+  }
+
+  .nav-active {
+    left: 0;
+    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Responsive styles */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 200px;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+@media (max-width: 1020px) {
+  main {
+    margin-left: 0px;
+  }
+}
+
+.btn {
+  border: none;
+}
+.btn:hover {
+  background-color: #4b4646;
+  color: white;
+}
+#add-new-btn {
+  align-self: flex-end;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+#add-new-btn:hover {
+  background-color: #ff4f3e; /* Darker Coral Red on Hover */
+}
+
+#add-new-form,
+#edit-form {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--primary-bg);
+  padding: 60px;
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.127);
+  z-index: 1;
+  border: 1px solid #00000054;
+  border-radius: 5px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#add-new-form label,
+#edit-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#add-new-form input,
+#edit-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+#add-new-form button,
+#edit-form button {
+  padding: 10px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#add-new-form button:hover,
+#edit-form button:hover {
+  background-color: #ff4f3e; /* Darker Coral Red on Hover */
+}
+
+#close-btn,
+#edit-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#close-btn:hover,
+#edit-close-btn:hover {
+  background-color: #ff4f3e; /* Darker Coral Red on Hover */
+}
+
+.edit-btn,
+.delete-btn {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  background-color: #ff4f3e; /* Darker Coral Red on Hover */
+}
+.hover-effect:hover {
+  background-color: var(
+    --secondary-bg
+  ); /* Use the secondary background color or any color you prefer */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#login-popup {
+  display: none;
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  transform: translate(-25%, -25%);
+  background-color: #fff;
+  padding: 40px; /* Increased padding */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+#close-login-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#close-login-popup:hover {
+  background-color: #333;
+}
+
+#login-popup button {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#login-popup button:hover {
+  background-color: #333;
+}
+/* Add this style to your existing styles */
+#details-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 3; /* Higher z-index to appear above other elements */
+}
+
+#details-popup h2 {
+  margin-bottom: 20px;
+}
+
+#details-popup p {
+  margin-bottom: 10px;
+}
+
+#close-details-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#close-details-popup:hover {
+  background-color: #333;
+}
+/* Style for the branch form popup */
+.branch-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  width: 300px; /* Adjust width as needed */
+}
+
+.branch-popup h2 {
+  margin-top: 0;
+}
+
+.branch-popup label {
+  display: block;
+  margin-top: 10px;
+}
+
+.branch-popup input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.branch-popup button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50; /* Green color */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.branch-popup button.cancel {
+  background-color: #ccc; /* Grey color */
+}
+
+.branch-popup button:hover {
+  background-color: #45a049; /* Dark green color on hover */
+}
+
+.branch-popup button.cancel:hover {
+  background-color: #aaa; /* Dark grey color on hover */
+}
+#supervisor-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+#supervisor-popup > div {
+  text-align: right;
+}
+
+#supervisor-popup h2 {
+  margin-bottom: 15px;
+}
+
+#supervisor-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#supervisor-list li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+#supervisor-popup button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#supervisor-popup button:hover {
+  background-color: #0056b3;
+}
