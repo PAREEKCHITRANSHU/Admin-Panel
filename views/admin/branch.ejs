@@ -119,7 +119,7 @@
       }
 
       function deleteLead(id) {
-        const confirmation =confirm("deakh le bhai delet ho gai to ps ni aygi");
+        const confirmation =confirm("Are you sure you want to delete this lead?");
         if(confirmation){
           fetch(`/admin/branch/delete/${id}`,{
             method:'DELETE',
