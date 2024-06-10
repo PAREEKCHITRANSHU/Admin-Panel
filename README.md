@@ -32,7 +32,7 @@ This project is an Admin Panel Website that manages information for supervisors 
 # Installation
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/admin-panel-website.git
+    git clone https://github.com/PAREEKCHITRANSHU/Admin-Panel.git
     ```
 2. Navigate to the project directory:
     ```sh
