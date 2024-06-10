@@ -208,6 +208,13 @@ th {
 #edit-form button:hover {
   background-color: #ff4f3e; /* Darker Coral Red on Hover */
 }
+@media (max-width: 1020px) {
+  .edit-btn,
+  .delete-btn {
+    padding: 6% 8%;
+    /* display: inline-block; */
+  }
+}
 
 #close-btn,
 #edit-close-btn {
