@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const ejs = require("ejs");
 const cookieParser=require("cookie-parser");
+const path = require("path");
 
 
 const app = express();
@@ -13,9 +14,9 @@ const adminRouter = require("./Routes/AdminRoutes");
 // Connect to MongoDB
 require("./config/database").connect();
 
-app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "/public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
